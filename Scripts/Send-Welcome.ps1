@@ -41,3 +41,5 @@ try {
     Add-Content -Path $LogPath -Value "$(Get-Date -Format 'yyyy-MM-dd HH:mm:ss') ❌ Ошибка отправки: $Email ($FullName): $($_.Exception.Message)"
     exit 4
 }
+
+# Test lint trigger
