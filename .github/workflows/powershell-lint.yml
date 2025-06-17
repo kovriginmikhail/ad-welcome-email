@@ -1,0 +1,27 @@
+name: PowerShell Lint
+
+on:
+  push:
+    paths:
+      - '**.ps1'
+  pull_request:
+    paths:
+      - '**.ps1'
+
+jobs:
+  lint:
+    name: PowerShell Syntax Check
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Run PowerShell script analysis
+      shell: pwsh
+      run: |
+        Get-ChildItem -Recurse -Filter *.ps1 | ForEach-Object {
+          Write-Host "Checking $_"
+          pwsh -NoLogo -NoProfile -Command "Invoke-ScriptAnalyzer -Path $_.FullName -Recurse -Severity Error"
+        }
+      continue-on-error: false
