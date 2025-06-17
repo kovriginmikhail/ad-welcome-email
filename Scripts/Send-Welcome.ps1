@@ -8,10 +8,10 @@ $Subject    = "Добро пожаловать в Your Company!"
 $Template   = "C:\Templates\welcome-rbk-bilingual.html"
 $LogPath    = "C:\Logs\welcome-mail.log"
 
-$event = Get-WinEvent -LogName Security -FilterHashtable @{Id = 4720} -MaxEvents 1
-if (-not $event) { exit 1 }
+$NewUserEvent = Get-WinEvent -LogName Security -FilterHashtable @{Id = 4720} -MaxEvents 1
+if (-not $NewUserEvent) { exit 1 }
 
-$xml = [xml]$event.ToXml()
+$xml = [xml]$NewUserEvent.ToXml()
 $newUserSam = ($xml.Event.EventData.Data | Where-Object { $_.Name -eq "TargetUserName" }).'#text'
 
 try {
