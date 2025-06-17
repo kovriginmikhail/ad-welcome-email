@@ -1,7 +1,8 @@
 # AD Welcome Email Automation
-[![Release](https://img.shields.io/github/v/release/kovriginmikhail/ad-welcome-email)](https://github.com/kovriginmikhail/ad-welcome-email/releases)
-[![License: MIT](https://img.shields.io/github/license/kovriginmikhail/ad-welcome-email)](LICENSE)
-[![Language: PowerShell](https://img.shields.io/badge/language-PowerShell-blue)]()
+![PowerShell](https://img.shields.io/badge/PowerShell-0078D7?style=flat&logo=powershell&logoColor=white)
+![HTML](https://img.shields.io/badge/HTML-Template-orange?style=flat&logo=html5&logoColor=white)
+![MIT License](https://img.shields.io/github/license/kovriginmikhail/ad-welcome-email)
+![Last Commit](https://img.shields.io/github/last-commit/kovriginmikhail/ad-welcome-email)
 
 PowerShell-based solution to auto-send bilingual welcome emails when a new AD user is created in a specific OU.
 This project is designed for hybrid Microsoft Exchange environments and integrates with HR onboarding processes by sending immediate, well-branded welcome messages to new staff.
