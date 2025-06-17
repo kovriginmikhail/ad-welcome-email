@@ -2,9 +2,9 @@ param ()
 
 Import-Module ActiveDirectory
 
-$SmtpServer = "smtp.bankrbk.kz"
-$From       = "it-support@bankrbk.kz"
-$Subject    = "Добро пожаловать в Bank RBK!"
+$SmtpServer = "smtp.yourcompany.domain"
+$From       = "it-support@yourcompany.domain"
+$Subject    = "Добро пожаловать в Your Company!"
 $Template   = "C:\Templates\welcome-rbk-bilingual.html"
 $LogPath    = "C:\Logs\welcome-mail.log"
 
@@ -21,12 +21,12 @@ try {
     exit 2
 }
 
-if ($user.DistinguishedName -notmatch '(?i)OU=Банк') {
-    Add-Content -Path $LogPath -Value "$(Get-Date -Format 'yyyy-MM-dd HH:mm:ss') ⏭ Пропущен (не OU=Банк): $($user.SamAccountName)"
+if ($user.DistinguishedName -notmatch '(?i)OU=Bank') {
+    Add-Content -Path $LogPath -Value "$(Get-Date -Format 'yyyy-MM-dd HH:mm:ss') ⏭ Пропущен (не OU=Bank): $($user.SamAccountName)"
     exit 0
 }
 
-$Email = "$($user.SamAccountName)@bankrbk.kz"
+$Email = "$($user.SamAccountName)@yourcompany.domain"
 $FullName = if ($user.DisplayName) { $user.DisplayName } else { $user.SamAccountName }
 
 try {
@@ -42,4 +42,3 @@ try {
     exit 4
 }
 
-# Test lint trigger again
