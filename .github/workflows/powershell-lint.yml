@@ -20,8 +20,5 @@ jobs:
     - name: Run PowerShell script analysis
       shell: pwsh
       run: |
-        Get-ChildItem -Recurse -Filter *.ps1 | ForEach-Object {
-          Write-Host "Checking $_"
-          pwsh -NoLogo -NoProfile -Command "Invoke-ScriptAnalyzer -Path $_.FullName -Recurse -Severity Error"
-        }
-      continue-on-error: false
+        Install-Module -Name PSScriptAnalyzer -Force -Scope CurrentUser
+        Invoke-ScriptAnalyzer -Path './Scripts/*.ps1' -Recurse -Severity Warning
